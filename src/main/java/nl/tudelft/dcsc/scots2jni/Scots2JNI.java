@@ -79,4 +79,30 @@ public class Scots2JNI {
             final String class_name, final int dof_idx)
             throws IllegalStateException, IllegalArgumentException,
             ClassNotFoundException;
+
+    /**
+     * Allows to start the new export of the unfit points for the symbolic
+     * controller into a BDD.
+     */
+    public static native void start_unfit_export();
+
+    /**
+     * Allows to export the unfit points of the given individual into the BDD.
+     *
+     * @param class_name the individual's class name
+     * @param dof_idx the dof index (corresponds to the manager index of
+     * SR2JLIB)
+     */
+    public static native void export_unfit_points(
+            final String class_name, final int dof_idx);
+
+    /**
+     * Allows to finish the new export of the unfit points for the symbolic
+     * controller into a BDD.
+     *
+     * @param file_name the file name, without extension to export the points
+     */
+    public static native void finish_unfit_export(
+            final String file_name);
+
 }
