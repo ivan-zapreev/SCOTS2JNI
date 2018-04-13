@@ -35,16 +35,14 @@ import nl.tudelft.dcsc.sr2jlib.fitness.Fitness;
  */
 public class Scots2JNI {
 
-    static {
-        //ToDo: Avoid this explicit dependency by using a property file of smth
-        final String libName = "/Users/izapreev/Projects/CCLR/soft/SCOTS2DLL/dist/libSCOTS2DLL.dylib";
-        try {
-            System.load(libName);
-        } catch (UnsatisfiedLinkError ex) {
-            Logger.getLogger(Scots2JNI.class.getName()).log(Level.SEVERE,
-                    "Native code library '" + libName + "' failed to load.\n", ex);
-            System.exit(1);
-        }
+    /**
+     * Allows to load the library implementing the native methods
+     *
+     * @param lib_file_name the library file name
+     * @throws UnsatisfiedLinkError is thrown when linking fails
+     */
+    public static void load_lib(final String lib_file_name) throws UnsatisfiedLinkError {
+        System.load(lib_file_name);
     }
 
     /**
