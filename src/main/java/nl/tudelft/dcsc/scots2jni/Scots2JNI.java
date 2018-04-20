@@ -22,8 +22,6 @@
 package nl.tudelft.dcsc.scots2jni;
 
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import nl.tudelft.dcsc.sr2jlib.fitness.Fitness;
 
 /**
@@ -56,9 +54,19 @@ public class Scots2JNI {
             throws FileNotFoundException;
 
     /**
+     * Allows to get the controller's state space size. I.e. the number of
+     * state-space grid points. This value is larger than the domain size.
+     *
+     * @return the loaded controller's state-space size.
+     */
+    public static native int get_state_space_size()
+            throws IllegalStateException;
+
+    /**
      * Allows to configure the fitness computer
      *
      * @param cfg the configuration class
+     * @throws IllegalStateException if the controller is not loaded
      */
     public static native void configure(final FConfig cfg)
             throws IllegalArgumentException;
@@ -70,8 +78,9 @@ public class Scots2JNI {
      * @param class_name the class name storing the generated function
      * @param dof_idx the input space dof index
      * @return the fitness value of the generated function
-     * @throws IllegalStateException
-     * @throws java.lang.ClassNotFoundException
+     * @throws IllegalStateException if the controller is not loaded
+     * @throws java.lang.ClassNotFoundException if the individual class could
+     * not be found
      */
     public static native Fitness compute_fitness(
             final String class_name, final int dof_idx)
