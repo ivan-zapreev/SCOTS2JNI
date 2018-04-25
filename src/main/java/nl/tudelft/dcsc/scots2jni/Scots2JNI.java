@@ -29,7 +29,7 @@ import nl.tudelft.dcsc.sr2jlib.fitness.Fitness;
  * original controller and to measure the fitness of provided individuals with
  * respect to it.
  *
- * @author Dr. Ivan S. Zapreev
+ * @author <a href="mailto:ivan.zapreev@gmail.com"> Dr. Ivan S. Zapreev </a>
  */
 public class Scots2JNI {
 
@@ -57,9 +57,11 @@ public class Scots2JNI {
      * Allows to get the controller's state space size. I.e. the number of
      * state-space grid points. This value is larger than the domain size.
      *
+     * @param ss_dim the number of state-space dimensions
+     *
      * @return the loaded controller's state-space size.
      */
-    public static native int get_state_space_size()
+    public static native int get_state_space_size(final int ss_dim)
             throws IllegalStateException;
 
     /**
@@ -99,8 +101,9 @@ public class Scots2JNI {
      * @param class_name the individual's class name
      * @param dof_idx the dof index (corresponds to the manager index of
      * SR2JLIB)
+     * @return the real (actual) fitness of the individual
      */
-    public static native void export_unfit_points(
+    public static native double export_unfit_points(
             final String class_name, final int dof_idx);
 
     /**

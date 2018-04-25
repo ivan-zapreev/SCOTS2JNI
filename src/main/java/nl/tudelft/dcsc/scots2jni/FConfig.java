@@ -24,7 +24,7 @@ package nl.tudelft.dcsc.scots2jni;
 /**
  * Stores configuration for the control fitness evaluator
  *
- * @author Dr. Ivan S. Zapreev
+ * @author <a href="mailto:ivan.zapreev@gmail.com"> Dr. Ivan S. Zapreev </a>
  */
 public class FConfig {
 
@@ -41,30 +41,33 @@ public class FConfig {
     //True if the fitness type with attractor is to be used (EXAT, INVERSE or ARCTANG), otherwise exact
     public final boolean m_is_complex;
     //True if the Monte-Carlo Fitness computations are to be used
-    public final boolean m_is_monte_carlo;
+    public final boolean m_is_mc;
     //True if the Recursive Stratified Sampling (RSS) is to be used
-    public final boolean m_is_rec_strat_sample;
-    //Stores the initial samle size for the Mone Carlo sampling
+    public final boolean m_is_rss;
+    //Stores the initial sample size for the Monte Carlo sampling
     public final long m_sample_size;
     //Stores the minimum sample size the RSS is applied to
-    public final long m_min_bisect_size;
+    public final long m_bisect_size;
     //Stores the fraction of sample to be used for bisection
-    public final double m_sample_bisect_ratio;
+    public final double m_bisect_ratio;
 
     /**
-     * The basic constructor 
-     * 
+     * The basic constructor
+     *
      * @param ss_size state-space size
      * @param ftn_type fitness type
      * @param attr_size the attractor size
-     * @param ftn_scale the fitness function scaling factor for fitness types such as INERSE and ARCTANG
+     * @param ftn_scale the fitness function scaling factor for fitness types
+     * such as INERSE and ARCTANG
      * @param is_scale true if the function is to be scaled first
      * @param is_complex true if the fitness type with attractor is to be used
      * @param is_monte_carlo true if the Monte-Carlo sampling is to be used
-     * @param is_rec_strat_sample true if the Recursive Stratified Sampling (RSS) is to be used
+     * @param is_rec_strat_sample true if the Recursive Stratified Sampling
+     * (RSS) is to be used
      * @param sample_size the initial sample size
      * @param min_bisect_size the minimum sample size for the RSS bisection
-     * @param sample_bisect_ratio the proportion of the sample to be used to figure out the bisection
+     * @param sample_bisect_ratio the proportion of the sample to be used to
+     * figure out the bisection
      */
     public FConfig(final int ss_size, final int ftn_type,
             final double attr_size, final double ftn_scale,
@@ -78,11 +81,11 @@ public class FConfig {
         this.m_ftn_scale = ftn_scale;
         this.m_is_scale = is_scale;
         this.m_is_complex = is_complex;
-        this.m_is_monte_carlo = is_monte_carlo;
-        this.m_is_rec_strat_sample = is_rec_strat_sample;
+        this.m_is_mc = is_monte_carlo;
+        this.m_is_rss = is_rec_strat_sample;
         this.m_sample_size = sample_size;
-        this.m_min_bisect_size = min_bisect_size;
-        this.m_sample_bisect_ratio = sample_bisect_ratio;
+        this.m_bisect_size = min_bisect_size;
+        this.m_bisect_ratio = sample_bisect_ratio;
     }
 
 }
