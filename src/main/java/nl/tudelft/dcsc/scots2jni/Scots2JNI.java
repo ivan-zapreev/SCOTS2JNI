@@ -78,14 +78,13 @@ public class Scots2JNI {
      * class name
      *
      * @param class_name the class name storing the generated function
-     * @param dof_idx the input space dof index
      * @return the fitness value of the generated function
      * @throws IllegalStateException if the controller is not loaded
      * @throws java.lang.ClassNotFoundException if the individual class could
      * not be found
      */
     public static native Fitness compute_fitness(
-            final String class_name, final int dof_idx)
+            final String class_name)
             throws IllegalStateException, IllegalArgumentException,
             ClassNotFoundException;
 
@@ -99,12 +98,10 @@ public class Scots2JNI {
      * Allows to export the unfit points of the given individual into the BDD.
      *
      * @param class_name the individual's class name
-     * @param dof_idx the dof index (corresponds to the manager index of
-     * SR2JLIB)
      * @return the real (actual) fitness of the individual
      */
     public static native double export_unfit_points(
-            final String class_name, final int dof_idx);
+            final String class_name);
 
     /**
      * Allows to finish the new export of the unfit points for the symbolic
