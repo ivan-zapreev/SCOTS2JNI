@@ -46,6 +46,8 @@ public class FConfig {
     public final boolean m_is_rss;
     //Stores the initial sample size for the Monte Carlo sampling
     public final long m_sample_size;
+    //Stores the number of re-sampling attempts for when we get a duplicate or non-domain sample state
+    public final int m_re_sample_attempts;
     //Stores the minimum sample size the RSS is applied to
     public final long m_bisect_size;
     //Stores the fraction of sample to be used for bisection
@@ -65,6 +67,8 @@ public class FConfig {
      * @param is_rec_strat_sample true if the Recursive Stratified Sampling
      * (RSS) is to be used
      * @param sample_size the initial sample size
+     * @param re_sample_attempts the number of re-sampling attempts for when we
+     * get a duplicate or non-domain sample state
      * @param min_bisect_size the minimum sample size for the RSS bisection
      * @param sample_bisect_ratio the proportion of the sample to be used to
      * figure out the bisection
@@ -73,8 +77,8 @@ public class FConfig {
             final double attr_size, final double ftn_scale,
             final boolean is_scale, final boolean is_complex,
             final boolean is_monte_carlo, final boolean is_rec_strat_sample,
-            final long sample_size, final long min_bisect_size,
-            final double sample_bisect_ratio) {
+            final long sample_size, final int re_sample_attempts,
+            final long min_bisect_size, final double sample_bisect_ratio) {
         this.m_ss_size = ss_size;
         this.m_ftn_type = ftn_type;
         this.m_attr_size = attr_size;
@@ -84,6 +88,7 @@ public class FConfig {
         this.m_is_mc = is_monte_carlo;
         this.m_is_rss = is_rec_strat_sample;
         this.m_sample_size = sample_size;
+        this.m_re_sample_attempts = re_sample_attempts;
         this.m_bisect_size = min_bisect_size;
         this.m_bisect_ratio = sample_bisect_ratio;
     }
