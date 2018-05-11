@@ -39,6 +39,8 @@ public class FConfig {
     //True if the function shall be scaled to the min/max values befor fitness is computed
     public final boolean m_is_scale;
     //True if the fitness type with attractor is to be used (EXAT, INVERSE or ARCTANG), otherwise exact
+    public final boolean m_is_extended;
+    //True if the fitness type with attractor is to be used and it is to be combined with the actual one
     public final boolean m_is_complex;
     //True if the Monte-Carlo Fitness computations are to be used
     public final boolean m_is_mc;
@@ -62,7 +64,8 @@ public class FConfig {
      * @param ftn_scale the fitness function scaling factor for fitness types
      * such as INERSE and ARCTANG
      * @param is_scale true if the function is to be scaled first
-     * @param is_complex true if the fitness type with attractor is to be used
+     * @param is_extended true if the fitness type with attractor is to be used
+     * @param is_complex true if the fitness type with attractor is to be combined with the actual fitness
      * @param is_monte_carlo true if the Monte-Carlo sampling is to be used
      * @param is_rec_strat_sample true if the Recursive Stratified Sampling
      * (RSS) is to be used
@@ -75,15 +78,17 @@ public class FConfig {
      */
     public FConfig(final int ss_size, final int ftn_type,
             final double attr_size, final double ftn_scale,
-            final boolean is_scale, final boolean is_complex,
-            final boolean is_monte_carlo, final boolean is_rec_strat_sample,
-            final long sample_size, final int re_sample_attempts,
-            final long min_bisect_size, final double sample_bisect_ratio) {
+            final boolean is_scale, final boolean is_extended,
+            final boolean is_complex, final boolean is_monte_carlo,
+            final boolean is_rec_strat_sample, final long sample_size,
+            final int re_sample_attempts, final long min_bisect_size,
+            final double sample_bisect_ratio) {
         this.m_ss_size = ss_size;
         this.m_ftn_type = ftn_type;
         this.m_attr_size = attr_size;
         this.m_ftn_scale = ftn_scale;
         this.m_is_scale = is_scale;
+        this.m_is_extended = is_extended;
         this.m_is_complex = is_complex;
         this.m_is_mc = is_monte_carlo;
         this.m_is_rss = is_rec_strat_sample;
