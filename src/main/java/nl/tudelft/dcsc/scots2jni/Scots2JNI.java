@@ -22,6 +22,8 @@
 package nl.tudelft.dcsc.scots2jni;
 
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nl.tudelft.dcsc.sr2jlib.fitness.Fitness;
 
 /**
@@ -33,6 +35,9 @@ import nl.tudelft.dcsc.sr2jlib.fitness.Fitness;
  */
 public class Scots2JNI {
 
+    //Stores the reference to the logger
+    private static final Logger LOGGER = Logger.getLogger(Scots2JNI.class.getName());
+
     /**
      * Allows to load the library implementing the native methods
      *
@@ -40,6 +45,9 @@ public class Scots2JNI {
      * @throws UnsatisfiedLinkError is thrown when linking fails
      */
     public static void load_lib(final String lib_file_name) throws UnsatisfiedLinkError {
+        LOGGER.log(Level.INFO, "Loading the SCOTS2DLL dynamic library:"
+                + " {0}, library path: {1}", new Object[]{lib_file_name,
+                    System.getProperty("java.library.path")});
         System.load(lib_file_name);
     }
 
